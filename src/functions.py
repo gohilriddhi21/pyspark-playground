@@ -39,6 +39,8 @@ try:
     print("\nReplace Data:", df_json.replace("IT", "Information Technology").show())
     print("\nCollect Data:", df_json.collect())
     print("\nTake Data:", df_json.take(2))
+    
+    ## RDD Operations
     print("\nMap Data:", df_json.rdd.map(lambda x: (x.name, x.age)).collect())
     print("\nFlatMap Data:", df_json.rdd.flatMap(lambda x: (x.name, x.age)).collect())
     print("\nReduce Data:", df_json.rdd.map(lambda x: x.salary).reduce(lambda x, y: x + y))
@@ -62,7 +64,7 @@ try:
     print("\nCoalesce Data:", df_json.rdd.map(lambda x: (x.id, x.name)).coalesce(1).glom().collect())
     print("\nRepartition Data:", df_json.rdd.map(lambda x: (x.id, x.name)).repartition(2).glom().collect())
     print("\nPersist Data:", df_json.rdd.map(lambda x: (x.id, x.name)).persist().glom().collect())
-    print("\nUnpersist Data:", df_json.rdd.map(lambda x: (x.id, x.name)).unpersist().glom().collect())
+    print("\nUn-persist Data:", df_json.rdd.map(lambda x: (x.id, x.name)).unpersist().glom().collect())
     print("\nCollect As Map:", df_json.rdd.map(lambda x: (x.id, x.name)).collectAsMap())
     print("\nCount By Key:", df_json.rdd.map(lambda x: (x.id, x.name)).countByKey())
     print("\nLookup Data:", df_json.rdd.map(lambda x: (x.id, x.name)).lookup(1))
