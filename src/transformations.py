@@ -40,6 +40,9 @@ try:
         .when(col("salary").isNull() | (col("salary") == 0), col("avg_salary")) \
         .otherwise(col("salary"))
     ).select("id", "name", "department", "salary")
+    
+    print("\nExplaining the Plan: ")
+    df.explain()
     df_transformed.show()
     
 except Exception as e:
